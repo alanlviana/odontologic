@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class ConsultaServico extends IdentifiableEntity implements Serializable {
