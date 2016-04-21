@@ -2,13 +2,17 @@ package br.com.odontologic.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
 
-@SuppressWarnings("serial")
-@Entity
-public class Endereco extends IdentifiableEntity implements Serializable{
+@Embeddable
+public class Endereco implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8464797434244125164L;
 	
 	private String rua;
 	private String numero;

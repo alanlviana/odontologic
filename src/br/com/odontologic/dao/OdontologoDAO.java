@@ -20,51 +20,38 @@ public class OdontologoDAO implements DAO<Odontologo> {
 
 	@Override
 	public Odontologo insert(Odontologo object) {
-		//em.getTransaction().begin();
-		em.persist(object.getEndereco());
 		em.persist(object);
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public Odontologo update(Odontologo object) {
-		//em.getTransaction().begin();
-		object.setEndereco(em.merge(object.getEndereco()));
 		object = em.merge(object);
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public Odontologo delete(Odontologo object) {
-		//em.getTransaction().begin();
 		object = selectById(object);
 		object.setAtivo(false);
 		object = em.merge(object);
-		//em.getTransaction().commit();
-
 		return object;
 	}
 
 	@Override
 	public Odontologo selectById(Odontologo object) {
-		//em.getTransaction().begin();
 		object = em.find(Odontologo.class, object.getId());
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public List<Odontologo> selectAll() {
-		//em.getTransaction().begin();
 		TypedQuery<Odontologo> tq = em.createQuery(
 				"SELECT o FROM Odontologo o where o.ativo = :ativo",
 				Odontologo.class);
 		tq.setParameter("ativo", true);
 
 		List<Odontologo> list = tq.getResultList();
-		//em.getTransaction().commit();
 		return list;
 	}
 
@@ -92,7 +79,6 @@ public class OdontologoDAO implements DAO<Odontologo> {
 	
 	public List<Odontologo> SelecionaPorNomeDisponivel(String nome,Date inicio,Date fim,Consulta consulta){
 		
-		//em.getTransaction().begin();
 		
 		String filtraCodigoConsulta = "";
 		
@@ -126,7 +112,6 @@ public class OdontologoDAO implements DAO<Odontologo> {
 
 		
 		List<Odontologo> list = tq.getResultList();
-		//em.getTransaction().commit();
 		
 		return list;
 	}

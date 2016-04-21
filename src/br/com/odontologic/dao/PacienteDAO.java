@@ -18,50 +18,38 @@ public class PacienteDAO implements DAO<Paciente> {
 	
 	@Override
 	public Paciente insert(Paciente object) {
-		//em.getTransaction().begin();
-		em.persist(object.getEndereco());
 		em.persist(object);
-		
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public Paciente update(Paciente object) {
-		//em.getTransaction().begin();
 		object.setEndereco(em.merge(object.getEndereco()));
 		object = em.merge(object);
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public Paciente delete(Paciente object) {
 		object = selectById(object);
-		//em.getTransaction().begin();
 		object.setAtivo(false);
 		object = em.merge(object);
-		//em.getTransaction().commit();
 		
 		return object;
 	}
 
 	@Override
 	public Paciente selectById(Paciente object) {
-		//em.getTransaction().begin();
 		object = em.find(Paciente.class, object.getId());
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public List<Paciente> selectAll() {
-		//em.getTransaction().begin();
 		TypedQuery<Paciente> tq = em.createQuery("SELECT p FROM Paciente p where p.ativo = :ativo",Paciente.class);
 		tq.setParameter("ativo", true);
 		
 		List<Paciente> list = tq.getResultList();
-		//em.getTransaction().commit();
 		return list;
 	}
 	
@@ -86,7 +74,6 @@ public class PacienteDAO implements DAO<Paciente> {
 	
 	public List<Paciente> selectPacienteSemConsulta(String nome,Date inicio,Date fim,Consulta consulta){
 
-		//em.getTransaction().begin();
 		
 		String filtraCodigoConsulta = "";
 		
@@ -120,7 +107,6 @@ public class PacienteDAO implements DAO<Paciente> {
 
 		
 		List<Paciente> list = tq.getResultList();
-		//em.getTransaction().commit();
 		
 		return list;
 	}

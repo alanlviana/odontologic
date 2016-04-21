@@ -14,50 +14,38 @@ public class ConvenioDAO implements DAO<Convenio> {
 	
 	@Override
 	public Convenio insert(Convenio object) {
-		//em.getTransaction().begin();
-		em.persist(object.getEndereco());
 		em.persist(object);
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public Convenio update(Convenio object) {
-		//em.getTransaction().begin();
-		object.setEndereco(em.merge(object.getEndereco()));
-		object = em.merge(object);
-		//em.getTransaction().commit();
-		
+		object = em.merge(object);		
 		return object;
 	}
 
 	@Override
 	public Convenio delete(Convenio object) {
 		object = selectById(object);
-		//em.getTransaction().begin();
 		object.setAtivo(false);
 		object = em.merge(object);
-		//em.getTransaction().commit();
+		
 			
 		return object;
 	}
 
 	@Override
 	public Convenio selectById(Convenio object) {
-		//em.getTransaction().begin();
 		object = em.find(Convenio.class, object.getId());
-		//em.getTransaction().commit();
 		return object;
 	}
 
 	@Override
 	public List<Convenio> selectAll() {
-		//em.getTransaction().begin();
 		TypedQuery<Convenio> tq = em.createQuery("SELECT c FROM Convenio c where c.ativo = :ativo",Convenio.class);
 		tq.setParameter("ativo", true);
 		
 		List<Convenio> list = tq.getResultList();
-		//em.getTransaction().commit();
 		return list;
 	}
 	

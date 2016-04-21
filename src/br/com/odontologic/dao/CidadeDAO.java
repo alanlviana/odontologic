@@ -50,4 +50,12 @@ public class CidadeDAO {
 		
 	}
 	
+	public List<Cidade> getCidades(Estado estado){
+		TypedQuery<Cidade> tq = em.createQuery("SELECT c FROM Cidade c WHERE c.estado = :estado",Cidade.class);
+		tq.setParameter("estado", estado);
+		
+		List<Cidade> list = tq.getResultList();
+		return list ;
+	}	
+	
 }

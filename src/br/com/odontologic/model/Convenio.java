@@ -19,7 +19,6 @@ public class Convenio extends IdentifiableEntity implements Serializable {
 	private String codConvenio;
 	@NotNull(message="O campo Razão Social é de preenchimento obrigatório.")
 	private String nome;
-	@OneToOne
 	private Endereco endereco = new Endereco();
 	private String registroANS;
 	private String telefone;

@@ -31,7 +31,6 @@ public class Odontologo extends IdentifiableEntity implements Serializable {
 	private String telefoneCelular;
 	private String email;
 	private String sexo;
-	@OneToOne
 	private Endereco endereco;
 	private String cro;
 	private String especialidade;

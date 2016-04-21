@@ -9,7 +9,7 @@ import javax.transaction.Transactional.TxType;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
-import br.com.odontologic.dao.EnderecoDAO;
+import br.com.odontologic.dao.CidadeDAO;
 import br.com.odontologic.model.Cidade;
 import br.com.odontologic.model.Estado;
 
@@ -17,7 +17,7 @@ import br.com.odontologic.model.Estado;
 @Controller
 public class EnderecoController {
 
-	@Inject private EnderecoDAO dao;
+	@Inject private CidadeDAO dao;
 	@Inject private Result result;
 	
 	public List<Cidade> cidadeList(Estado estado){

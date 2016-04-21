@@ -40,7 +40,6 @@ public class Paciente extends IdentifiableEntity implements Serializable{
 	private Sexo sexo;
 	private String estadoCivil;
 	private String restricaoMedicinal;
-	@OneToOne
 	private Endereco endereco;
 	private boolean ativo;
 	@ManyToOne(optional=true)
