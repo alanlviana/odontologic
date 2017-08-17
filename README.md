@@ -16,7 +16,7 @@ mvn clean verify cargo:run
 
 Fiquem a vontade para deixar um feedback.
 
-Imagens do Aplicativo
+Imagens do Sistema
 <p align="center">
   <img src="https://github.com/alanlviana/odontologic/blob/master/prints/login_01.PNG?raw=true" width="350"/>
   <img src="https://github.com/alanlviana/odontologic/blob/master/prints/odontologo_form_01.PNG?raw=true" width="350"/>
